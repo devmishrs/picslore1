@@ -1,0 +1,21 @@
+
+{% comment %} 
+
+
+<form method="POST" action=".">
+    {% csrf_token %}
+    <input type="Submit" name="Submit">
+</form> 
+
+   {% endcomment %}
+
+
+{% block content %}
+<h3>Logged out</h3>
+<a href="login" >login again</a>
+{% endblock content %} 
+
+
+
+
+

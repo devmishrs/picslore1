@@ -1,0 +1,1 @@
+LOGIN_REDIRECT_URL = '/'  ---- currently Address to home later i have to change it to specific user profile.
