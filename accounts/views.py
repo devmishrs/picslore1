@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from accounts.models import User
 from django.views.generic import ListView
+from itertools import chain
+from django import template
 
 
 def loginn(request, *args, **kwargs):
@@ -54,4 +56,32 @@ def logout_view(request):
     #return HttpResponseRedirect(re)
 
 class SearchView(ListView):
-    pass
+    template_name = 'accounts/base.html'
+    paginate_by = 20
+    count = 0
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['count'] = self.count or 0
+        context['query'] = self.request.GET.get('q', None)
+        return context
+
+    def get_queryset(self):
+        request = self.request
+        query = request.GET.get('q', None)
+
+        if query is not None:
+            user_ser = User.objects.search(query)
+
+       qs = sorted(user_ser, key = lambda instance:instance.pk,
+       reverse = True)
+       self.count = len(qs)
+       return qs
+    return User.objects.none()
+
+
+register = template.library()
+@register.filter()
+def class_name(value):
+    return value.__class__.__name__
+    
