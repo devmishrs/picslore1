@@ -73,15 +73,7 @@ class SearchView(ListView):
         if query is not None:
             user_ser = User.objects.search(query)
 
-       qs = sorted(user_ser, key = lambda instance:instance.pk,
-       reverse = True)
-       self.count = len(qs)
-       return qs
-    return User.objects.none()
-
-
-register = template.library()
-@register.filter()
-def class_name(value):
-    return value.__class__.__name__
-    
+            qs = sorted(user_ser, key = lambda instance:instance.pk, reverse = True)
+            self.count = len(qs)
+            return qs
+        return User.objects.none()

@@ -13,7 +13,6 @@ USERNAME_REGEX = '^[a-zA-Z0-9.+-]*$'
 now = timezone.now()
 
 
-
 class UserManager(BaseUserManager):
     def _create_user(self, username, password, email, first_name, last_name):
         if not username:
@@ -80,18 +79,7 @@ class UserManager(BaseUserManager):
         user.save(using = self._db)
         return user
 
-    def search(self, query = None):
-        qs = self.get_queryset()
-        if query is not None:
-            or_lookups = (
-                Q(username__iexact = query)|
-                Q(first_name__icontain = query)
-            )
-            qs = User.objects.filter(or_lookups).distinct()
-        return qs
-
-
-            
+  
 
 
 class User(AbstractBaseUser, PermissionsMixin ):
@@ -145,6 +133,8 @@ class User(AbstractBaseUser, PermissionsMixin ):
     @property
     def staff(self):
         return self.is_staff
+
+    
 
 
 

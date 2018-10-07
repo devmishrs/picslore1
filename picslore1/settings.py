@@ -40,9 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'leaflet',
+    # 'elasticsearchapp',
 
     'accounts',
     'Profile',
+    'location',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -87,9 +91,19 @@ WSGI_APPLICATION = 'picslore1.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'accounts': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+
+    'default': {
+        'ENGINE' : 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'geo',
+        'USER':'geodjango',
+        'PASSWORD':'Dev@mishra123',
+        'HOST':'localhost',
+        'PORT':'5432',
+       
     }
 }
 
@@ -131,3 +145,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER' : (19.0760,72.8777),
+    'DEFAULT_ZOOM':5,
+    'MAX_ZOOM':18,
+    'MIN_ZOOM':2,
+    'SCALE':'both',   # imperial, both
+    'ATTRIBUTION_PREFIX':'By PlaceMap'
+}
