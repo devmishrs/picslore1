@@ -9,23 +9,23 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from picslore1.main_st import *
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f$nam9c)%+!hdtlt@e$_2#=f429$e4dmqsd6z2b04=#ehz1j_*'
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'f$nam9c)%+!hdtlt@e$_2#=f429$e4dmqsd6z2b04=#ehz1j_*'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -90,22 +90,22 @@ WSGI_APPLICATION = 'picslore1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'accounts': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
+# DATABASES = {
+#     'accounts': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     },
 
-    'default': {
-        'ENGINE' : 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'geo',
-        'USER':'geodjango',
-        'PASSWORD':'Dev@mishra123',
-        'HOST':'localhost',
-        'PORT':'5432',
+#     'default': {
+#         'ENGINE' : 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'geo',
+#         'USER':'geodjango',
+#         'PASSWORD':'Dev@mishra123',
+#         'HOST':'localhost',
+#         'PORT':'5432',
        
-    }
-}
+#     }
+# }
 
 
 # Password validation
