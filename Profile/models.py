@@ -24,7 +24,7 @@ class Address(models.Model):
 class UserProfile(models.Model):
     profile_pic = models.ImageField(blank= True)
     user_prof = models.OneToOneField(User, on_delete=models.CASCADE)
-    home_address = models.ForeignKey(Address, on_delete = models.SET_NULL, null = True)
+    # home_address = models.ForeignKey(Address, on_delete = models.SET_NULL, null = True)
  
 
     def __str__(self):
