@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 # Create your views here.
 
 def home(request):
+    
     context = {'user':request.user}
     return render(request,'accounts/home.html', context)
 
@@ -34,6 +35,8 @@ def change_password(request):
             'form':form
         }
         return render(request, 'accounts/change_password.html', context)
+
+    
 
 
 

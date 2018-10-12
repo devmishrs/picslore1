@@ -22,10 +22,10 @@ class Address(models.Model):
 
 
 class UserProfile(models.Model):
-    profile_pic = models.ImageField(blank= True)
+    profile_pic = models.ImageField(upload_to = 'user_profile/',blank= True, null = True)
     user_prof = models.OneToOneField(User, on_delete=models.CASCADE)
     # home_address = models.ForeignKey(Address, on_delete = models.SET_NULL, null = True)
- 
+    
 
     def __str__(self):
         return self.user_prof.username

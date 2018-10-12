@@ -8,12 +8,14 @@ Home
 {% block content %}
 
 <div class="form-group">
-      
+        <label>Profile</label>
+        <img src="{{user.username.image.url}}" width = '240'>
         <p>Username : {{user.username}}</p>
         <p>First Name : {{user.first_name}}</p>
         <p>Last Name : {{user.last_name}}</p>
         <p>email : {{user.email}}</p>
         <p>Photo : {{user.profile_pic}}</p>
+
 </div>
 <div class="container">
         <a href="{% url 'change_password' %}" class="btn btn-outline-info">Change Password</a>
