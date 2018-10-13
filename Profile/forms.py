@@ -30,6 +30,14 @@ class ProfView(forms.ModelForm):
     def get_fullname(request):
         return request.get_full_name()
 
+class UserProfileViews(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('profile_pic',)
+
+        
+
+
 
 class editProfileChangeForm(UserChangeForm):
     class Meta:
