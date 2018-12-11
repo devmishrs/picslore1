@@ -22,6 +22,7 @@ from picslore1 import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('accounts.urls')),
+    url(r'^profile/', include('Profile.urls')),
 
     
 ]

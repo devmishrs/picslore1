@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile
+from Profile.models import *
 from accounts.models import User
 from django.contrib.auth.forms import UserChangeForm
 
@@ -22,13 +22,23 @@ class ProfView(forms.ModelForm):
         }
 
     profile_pic = forms.ImageField(label = "Profile Photo")
-    address = forms.CharField(label = 'Address')
-    city = forms.CharField(label = 'City', max_length= 300)
-    state = forms.CharField(label = 'State', max_length=33)
-    country = forms.CharField(label = 'Country', max_length=33)
+    # address = forms.CharField(label = 'Address')
+    # city = forms.CharField(label = 'City', max_length= 300)
+    # state = forms.CharField(label = 'State', max_length=33)
+    # country = forms.CharField(label = 'Country', max_length=33)
 
     def get_fullname(request):
         return request.get_full_name()
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = '__all__'
+
+
+        
+
 
 
 class editProfileChangeForm(UserChangeForm):

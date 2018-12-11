@@ -4,8 +4,17 @@
 Home
 {% endblock title %}
 
+{% block head %}
+
+{% endblock head %}
+
 
 {% block content %}
+
+<div id = 'getLocations'>
+        <button id = 'id_get_location'>Get Location</button>
+</div>
+<p id = 'demo'></p>
 
 <div class="form-group">
         <label>Profile</label>
@@ -22,6 +31,10 @@ Home
         <a href="{% url 'edit_profile' %}" class="btn btn-outline-info">Edit</a>
 
        
+</div>
+<div>
+        <h5>Address View here.</h5>
+        {{add_form.as_p}}
 </div>
 
 {% endblock content %}

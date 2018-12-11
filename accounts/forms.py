@@ -5,8 +5,8 @@ from django.db.models import Q
 from django.contrib.auth.forms import ReadOnlyPasswordHashField, UserCreationForm
 
 class CustomUserCreationForm(UserCreationForm):
-    password1 = forms.CharField(label = 'Password', widget = forms.PasswordInput)
-    password2 = forms.CharField(label = 'Password Conformation', widget = forms.PasswordInput)
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Password Conformation', widget=forms.PasswordInput)
     
     class Meta(forms.ModelForm):
         model = User
@@ -25,8 +25,8 @@ class CustomUserCreationForm(UserCreationForm):
             raise forms.ValidationError("Password don't match.")
         return password2
 
-    def save(self, commit = True):
-        user = super(CustomUserCreationForm, self).save(commit= False)
+    def save(self, commit=True):
+        user = super(CustomUserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password1'])
       #  user.username = self.cleaned_data['username']
        # user.email = self.cleaned_data['email']
@@ -39,15 +39,15 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField(label = 'Username')
-    password = forms.CharField(label = 'Password', widget = forms.PasswordInput)
+    username = forms.CharField(label='Username')
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
     def clean(self, *args, **kwargs):
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
+        username = self.cleaned_data.get(' username')
+        password = self.cleaned_data.get(' password')
         user_check = User.objects.filter(
-            Q(username__iexact = username)|
-            Q(email__iexact = username)
+            Q(username__iexact=username)|
+            Q(email__iexact=username)
         ).distinct()
         if not user_check.exists() and user_check.count() != 1:
             raise forms.ValidationError('User does not exist.')
@@ -69,10 +69,10 @@ class HomeViewNew(forms.ModelForm):
             'phone_number',
         )
         labels = {
-            'first_name' : 'First Name',
-            'last_name' :'Last Name',
-            'email' :'Email',
-            'phone_number' :'Phone Number',
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'email': 'Email',
+            'phone_number': 'Phone Number',
         }
 
 
