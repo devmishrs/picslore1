@@ -1,3 +1,4 @@
+var map;
 $(document).ready(function(){
     getLocation();
     $('#id_get_location').click(function(position){
@@ -38,5 +39,12 @@ function showPosition(position){
     console.log(valu.innerHTML)
     console.log(position.coords.latitude,'---------------');
 }
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('id_map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+    });
+  }
 
 

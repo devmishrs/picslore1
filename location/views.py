@@ -7,7 +7,6 @@ from location.models import *
 
 
 class GetLocationData(View):
-    @csrf_exempt
     def post(self, request):
         print('AJAX CALLED!!')
         if request.is_ajax():
@@ -18,13 +17,8 @@ class GetLocationData(View):
             lat = float(lat)
             long = float(long)
             n = Point(lat, long)
-            PlaceMap.objects.create(name='My Home', location=n)
+            p = PlaceMap.objects.create(name='My Home', location=n)
+            print(p)
             print('Location View is called.')
         return HttpResponse('Hi')
 
-
-'''
-    def get(self, request):
-        return HttpResponse('hello')
-    
-'''

@@ -2,8 +2,17 @@ from django.db import models
 from django.contrib.gis.db import models as gis_model
 from django.db.models import Manager as GeoManager
 
+class Location(models.Model):
+    lat_long = gis_model.PointField(
+        srid=4326,
+        spatial_index=True,
+        geography=True,
+    )
+    objects = GeoManager()
 
-# Create your models here.
+# class HomeLocation(models.Model):
+
+
 class PlaceMap(models.Model):
     name = models.CharField(max_length=66)
     location = gis_model.PointField(
