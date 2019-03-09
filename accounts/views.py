@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm, UserLoginForm, HomeViewNew
-#from .forms import UserLoginForm, UserAdminCreationForm, UserAdminChangeForm, RegistrationForm
+# from .forms import UserLoginForm, UserAdminCreationForm, UserAdminChangeForm, RegistrationForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -14,7 +14,7 @@ def loginn(request, *args, **kwargs):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
-            user_obj = form.cleaned_data.get('user_obj')
+            form.cleaned_data.get('user_obj')
             user = authenticate(username = username, password = password)
             login(request, user)
             return redirect('home')
@@ -38,8 +38,6 @@ def signup(request):
     return render(request, 'accounts/signup.html', {'form' : form})
 
 
-
-
 # def home(request):
 
 #     if request.method == 'GET':
@@ -50,10 +48,12 @@ def signup(request):
             
 #     return render(request, 'accounts/home.html', args)
 
+
 def logout_view(request):
     logout(request)
     return redirect('login')
-    #return HttpResponseRedirect(re)
+    # return HttpResponseRedirect(re)
+
 
 class SearchView(ListView):
     template_name = 'accounts/base.html'
@@ -72,8 +72,7 @@ class SearchView(ListView):
 
         if query is not None:
             user_ser = User.objects.search(query)
-
-            qs = sorted(user_ser, key = lambda instance:instance.pk, reverse = True)
+            qs = sorted(user_ser, key=lambda instance: instance.pk, reverse=True)
             self.count = len(qs)
             return qs
         return User.objects.none()

@@ -37,10 +37,6 @@ class AddressForm(forms.ModelForm):
         fields = '__all__'
 
 
-        
-
-
-
 class editProfileChangeForm(UserChangeForm):
     class Meta:
         model = User
@@ -51,5 +47,3 @@ class editProfileChangeForm(UserChangeForm):
             'email',
             'password',
         )
-    
-

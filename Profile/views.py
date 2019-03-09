@@ -26,16 +26,16 @@ def edit_prof(request):
         return render(request, 'accounts/edit_prof.html',context)
 
 def change_password(request):
-    if request.method==['POST']:
-        form = PasswordChangeForm(request.POST, user = request.user)
+    if request.method == ['POST']:
+        form = PasswordChangeForm(request.POST, user=request.user)
         if form.is_valid():
             form.save()
             return redirect('home')
 
     else:
-        form = PasswordChangeForm(user = request.user)
+        form = PasswordChangeForm(user=request.user)
         context = {
-            'form':form
+            'form': form
         }
         return render(request, 'accounts/change_password.html', context)
 
@@ -44,14 +44,9 @@ class getAddress(View):
     def get(self, request):
         addressForm = AddressForm(request.GET)
         if addressForm.is_valid():
+            #addressForm.lat_long =
             addressForm.save()
             print('Im calling this')
-            #return render('accounts/home.html',{'add_form': addressForm})
+            # return render('accounts/home.html',{'add_form': addressForm})
             return HttpResponse('adds')
-            
-        
-
-    
-
-
 
